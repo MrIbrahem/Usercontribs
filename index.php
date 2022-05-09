@@ -117,10 +117,9 @@
     $user = $_REQUEST["user"] ? $_REQUEST["user"] : 'Mr.Ibrahembot';
     $before = $_REQUEST["before"] ? $_REQUEST["before"] : '';
     #------------------------
-    for ( $i = 0; $i < $limit; $i++ ) {
+    for ( $i = 1; $i < $limit; $i++ ) {
         # print li
-        $li_id = $i++;
-        echo '<li class="filterDiv" id="li'.$li_id.'"></li>';
+        echo '<li class="filterDiv" id="li'.$i.'"></li>';
     };
     #------------------------
     print("
