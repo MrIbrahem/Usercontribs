@@ -31,31 +31,20 @@
     .boldfont {
         font-weight: bold;
     }
-    .spaces11 {
-        content: "&nbsp;";
-    }
     .changeslist {
         content: '. .';
     }
-    .filterDiv {
-        display: none;
-    }
-    .show2 {
-    display: list-item;
-    }
     .btne {
-  border: none;
-  outline: none;
-  padding: 6px 12px;
-  background-color: #f1f1f1;
-  cursor: pointer;
-}
+        border: none;
+        outline: none;
+        padding: 6px 12px;
+        background-color: #f1f1f1;
+        cursor: pointer;
+    }
 
-.btne:hover {
-  background-color: #ddd;
-}
-.btne.active {
-}
+    .btne:hover {
+        background-color: #ddd;
+    }
 </style>
 </head>
 <body>
@@ -103,24 +92,35 @@
         </div>
     </div>
         <div>
-            (<span class="boldfont newst">الأحدث</span> | الأقدم)
-            عرض (<span class="boldfont pref1">أحدث <span class="nowlimit"></span></span>  | <span class="boldfont next1">أقدم <span class="nowlimit"></span></span>)&nbsp;( <span class="boldfont limit20">20</span> | <span class="boldfont limit50">50</span> | <span class="boldfont limit100">100</span> | <span class="boldfont limit250">250</span> | <span class="boldfont limit500">500</span> ).
-            
+            (<span class="newst boldfont">الأحدث</span> | الأقدم)
+            عرض (<span class="pref1 boldfont">أحدث <span class="nowlimit"></span></span>  | <span class="next1 boldfont">أقدم <span class="nowlimit"></span></span>)&nbsp;( <span class="limit20 boldfont">20</span> | <span class="limit50 boldfont">50</span> | <span class="limit100 boldfont">100</span> | <span class="limit250 boldfont">250</span> | <span class="limit500 boldfont">500</span> ).
         </div>
     <div id="panel-body" class="panel-body">
         <ol id="rc">
 
         <?php
+            $limit = $_REQUEST["limit"] ? $_REQUEST["limit"] : '250';
+            #------------------------
+            for ( $i = 0; $i < $limit; $i++ ) {
+                echo '<li class="filterDiv" id="li'.$i.'"></li>';
+            };
+            #------------------------
+        ?>
+        </ol>
+    </div>
+    <div>
+            (<span class="newst boldfont">الأحدث</span> | الأقدم)
+            عرض (<span class="pref1 boldfont">أحدث <span class="nowlimit"></span></span>  | <span class="next1 boldfont">أقدم <span class="nowlimit"></span></span>)&nbsp;( <span class="limit20 boldfont">20</span> | <span class="limit50 boldfont">50</span> | <span class="limit100 boldfont">100</span> | <span class="limit250 boldfont">250</span> | <span class="limit500 boldfont">500</span> ).
+        </div>
+  </div>
+
+</div>
+<?php
     $limit = $_REQUEST["limit"] ? $_REQUEST["limit"] : '250';
 
     $rccontinue = $_REQUEST["rccontinue"] ? $_REQUEST["rccontinue"] : '';
     $user = $_REQUEST["user"] ? $_REQUEST["user"] : 'Mr.Ibrahembot';
     $before = $_REQUEST["before"] ? $_REQUEST["before"] : '';
-    #------------------------
-    for ( $i = 0; $i < $limit; $i++ ) {
-        # print li
-        echo '<li class="filterDiv" id="li'.$i.'"></li>';
-    };
     #------------------------
     print("
     <script>
@@ -128,23 +128,11 @@
     $('.nowlimit').text('$limit');
     $('#user').val('$user');
     get('$user','$limit','$rccontinue','$before');
-    filterSelection('all');
+    // filterSelection('all');
     </script>
     ");
 
 ?>
-        </ol>
-    </div>
-    <div class="panel">
-        <div>
-        (<span class="boldfont newst">الأحدث</span> | الأقدم)
-            عرض (<span class="boldfont pref1">أحدث <span class="nowlimit"></span></span>  | <span class="boldfont next1">أقدم <span class="nowlimit"></span></span>)&nbsp;( <span class="boldfont limit20">20</span> | <span class="boldfont limit50">50</span> | <span class="boldfont limit100">100</span> | <span class="boldfont limit250">250</span> | <span class="boldfont limit500">500</span> ).
-            
-        </div>
-    </div>
-  </div>
-
-</div>
 <script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
