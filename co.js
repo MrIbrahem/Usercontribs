@@ -74,7 +74,7 @@ function get(user,limit,rccontinue,before) {
             //-----------------------
             var recentchanges = response.query.recentchanges;
             //-----------------------
-            var numb = 1;
+            var numb = 0;
             //-----------------------
             for (var rc in recentchanges) {
                 	//---------
