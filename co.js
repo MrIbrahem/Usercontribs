@@ -24,12 +24,12 @@ function get(user,limit,rccontinue,before) {
     //-------------------------------------
     if (rccontinue != '') {
         //-----------------------
-        $(".newst").html("<a href='" + 'co.php?user=' + user + '&limit=' + limit + "'>الأحدث</a>");
+        $(".newst").html("<a href='" + 'index.php?user=' + user + '&limit=' + limit + "'>الأحدث</a>");
         //-----------------------
-        var ure = 'co.php?user=' + user + '&limit=' + limit;
+        var ure = 'index.php?user=' + user + '&limit=' + limit;
         //-----------------------
         if (before != '') {
-            var ure = 'co.php?user=' + user + '&rccontinue=' + before + '&limit=' + limit;
+            var ure = 'index.php?user=' + user + '&rccontinue=' + before + '&limit=' + limit;
         };
         //-----------------------
         
@@ -37,7 +37,7 @@ function get(user,limit,rccontinue,before) {
         //-----------------------
     };
     //-------------------------------------
-    var urs = 'co.php?user=' + user;
+    var urs = 'index.php?user=' + user;
     if (rccontinue != '' ) urs += '&rccontinue=' + rccontinue;
     urs += '&limit=';
 
@@ -154,9 +154,15 @@ function get(user,limit,rccontinue,before) {
                     //-----------------------
                     line += "\n<span id='comment'>(" + comment + ")</span>&rlm;\n";
 
-                    var newli = "\n<li>" + line + "</li>\n";
+                    //-----------------------
+                    $("#li"+numb).html(line);
+                    $("#li"+numb).addClass(recentchanges[rc].type);
+                    //-----------------------
+                    /*
+                    var newli = "\n<li class='filterDiv " + recentchanges[rc].type + "'>" + line + "</li>\n";
                     tableBody = $("#rc");
                     tableBody.append(newli);
+                    */
                     //---------
                     numb++;               
             }
@@ -167,7 +173,7 @@ function get(user,limit,rccontinue,before) {
             if (rcc != undefined && rcc != null) {
                 // $("#rccontinue").text(rcc);
                 // alert(rcc);
-                var ure = 'co.php?user=' + user + '&rccontinue=' + rcc + '&before=' + rccontinue + '&limit=' + limit;
+                var ure = 'index.php?user=' + user + '&rccontinue=' + rcc + '&before=' + rccontinue + '&limit=' + limit;
                 //---------------------------------
                 $(".next1").html("<a href='" + ure + "'>أقدم " + limit + "</a>");               
                 //---------------------------------
@@ -177,5 +183,37 @@ function get(user,limit,rccontinue,before) {
             //-----------------------
         })
         .catch(function(error){console.log(error);});
-
+    //-----------------------
+    
 };
+
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("filterDiv");
+  if (c == "all") c = "";
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "show2");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show2");
+  }
+}
+
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+  }
+}
+
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);     
+    }
+  }
+  element.className = arr1.join(" ");
+}
