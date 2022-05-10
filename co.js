@@ -140,13 +140,18 @@ function get2(user, limit, rccontinue, before) {
 				var comment = recentchanges[rc].comment;
 				if (comment.indexOf("/*") == -1) {
 					comment = recentchanges[rc].parsedcomment;
-					colimit = 500;
+					colimit = 900;
 				};
 
-				// strip long comments to 70 
+				// strip long comments to colimit
 				if (comment.length > colimit) {
 					comment = comment.substring(0, colimit) + "...";
 				};
+				// replace (href="/wiki/) by (href="https://ar.wikipedia.org/wiki/) in comment
+				var wikiurl = "https://ar.wikipedia.org/wiki/";
+
+				comment = comment.replace(/href="\/wiki\//g, 'href="' + wikiurl);
+				comment = comment.replace(/href='\/wiki\//g, "href='" + wikiurl);
 
 				line += "\n<span id='comment'>(" + comment + ")</span>&rlm;\n";
 
