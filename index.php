@@ -79,7 +79,7 @@
       <h2><span id="username">اسم المستخدم</span></h2><br>
     <div class="panel">
         <div class="row">
-            <div class="col-sm-6"> 
+            <div class="col-sm-8"> 
                 <div id="myBtnContainer">
                     <button class="btne active" onclick="filterbyns('nsall')">الكل</button>
                     <button class="btne" onclick="filterbyns('ns0')">مقالات</button>
@@ -90,40 +90,40 @@
 
                     <button class="btne" onclick="filterbyns('ns10')">قوالب</button>
                     <button class="btne" onclick="filterbyns('ns11')">(ن)</button>
-                    <div id="ns2" style="display:none;">
+                    <span id="ns2" style="display:none;">
                         <button class="btne" onclick="filterbyns('ns2')">مستخدم</button>
                         <button class="btne" onclick="filterbyns('ns3')">(ن)</button>
-                    </div>
-                    <div id="ns4" style="display:none;">
+                    </span>
+                    <span id="ns4" style="display:none;">
                         <button class="btne" onclick="filterbyns('ns4')">ويكيبيديا</button>
                         <button class="btne" onclick="filterbyns('ns5')">(ن)</button>
-                    </div>
-                    <div id="ns6" style="display:none;">
+                    </span>
+                    <span id="ns6" style="display:none;">
                         <button class="btne" onclick="filterbyns('ns6')">ملف</button>
                         <button class="btne" onclick="filterbyns('ns7')">(ن)</button>
-                    </div>
-                    <div id="ns12" style="display:none;">
+                    </span>
+                    <span id="ns12" style="display:none;">
                         <button class="btne" onclick="filterbyns('ns12')">مساعدة</button>
                         <button class="btne" onclick="filterbyns('ns13')">(ن)</button>
-                    </div>
-                    <div id="ns100" style="display:none;">
+                    </span>
+                    <span id="ns100" style="display:none;">
                         <button class="btne" onclick="filterbyns('ns100')">بوابة</button>
                         <button class="btne" onclick="filterbyns('ns101')">(ن)</button>
-                    </div>
-                    <div id="ns828" style="display:none;">
+                    </span>
+                    <span id="ns828" style="display:none;">
                         <button class="btne" onclick="filterbyns('ns828')">وحدة</button>
                         <button class="btne" onclick="filterbyns('ns829')">(ن)</button>
-                    </div>
+                    </span>
                 </div>	
             </div>
-            <div class="col-sm-3"> 
+            <div class="col-sm-2"> 
                 <input id="myInput" type="text" placeholder="فرز">
             </div>
-            <div class="col-sm-3"> 
+            <div class="col-sm-2"> 
                 <div id="myBtnContainer">
                     <button class="btne active" onclick="filterSelection('all')"> الكل</button>
                     <button class="btne" onclick="filterSelection('edit')">تعديلات</button>
-                    <button class="btne" onclick="filterSelection('new')">إنشاء صفحات</button>
+                    <button class="btne" onclick="filterSelection('new')">إنشاء</button>
                 </div>	
             </div>
         </div>
