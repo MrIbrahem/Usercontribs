@@ -17,6 +17,45 @@ const months = [
 	"ديسمبر",
 ];
 
+function make_date(timestamp) {
+
+	const d = new Date(timestamp);
+
+	var month = months[d.getMonth()];
+
+	var min = d.getMinutes();
+	if (min.toString().length == 1) min = "0" + min;
+
+	var hou = d.getHours();
+	if (hou.toString().length == 1) hou = "0" + hou;
+
+	var day = d.getDate();
+	if (day.toString().length == 1) day = "0" + day;
+
+	var date = min + ":&rlm;" + hou + "، " + day + " " + month + " " + d.getFullYear();
+	return date;
+};
+
+function make_comment(comment, parsedcomment) {
+	var colimit = 200;
+	var com = comment;
+	if (com.indexOf("/*") == -1) {
+		com = parsedcomment;
+		colimit = 900;
+	};
+
+	// strip long comments to colimit
+	if (com.length > colimit) {
+		com = com.substring(0, colimit) + "...";
+	};
+	// replace (href="/wiki/) by (href="https://ar.wikipedia.org/wiki/) in com
+	var wikiurl = "https://ar.wikipedia.org/wiki/";
+
+	com = com.replace(/href="\/wiki\//g, 'href="' + wikiurl);
+	com = com.replace(/href='\/wiki\//g, "href='" + wikiurl);
+	return com;
+}
+
 function get2(user, limit, rccontinue, before) {
 	// $("#username").text(user);
 	// make user url
@@ -58,6 +97,7 @@ function get2(user, limit, rccontinue, before) {
 	};
 
 	url2 = url2 + "?origin=*";
+	// url2 = url2 + "?format=json";
 	Object.keys(params).forEach(function(key) {
 		url2 += "&" + key + "=" + params[key];
 	});
@@ -67,33 +107,45 @@ function get2(user, limit, rccontinue, before) {
 			return response.json();
 		})
 		.then(function(response) {
-
+			/*{
+                "type": "new",
+                "ns": 0,
+                "title": "مانداكس",
+                "pageid": 8759796,
+                "revid": 58098959,
+                "old_revid": 0,
+                "rcid": 270123409,
+                "user": "7MaNdAx",
+                "userid": 2268617,
+                "new": "",
+                "oldlen": 0,
+                "newlen": 8774,
+                "timestamp": "2022-05-14T22:17:12Z",
+                "comment": "kul",
+                "parsedcomment": "kul",
+                "unpatrolled": "",
+                "tags": [
+                    "تمت إضافة وسم nowiki",
+                    "visualeditor"
+                ],
+                "sha1": "bc4551a6c5fd0612bd4726bcce99d4c8d2ac2161",
+                "oresscores": {
+                    "damaging": {
+                        "true": 0.106,
+                        "false": 0.894
+                    }
+                }
+            }*/
 			var recentchanges = response.query.recentchanges;
-
 			var numb = 0;
-
 			for (var rc in recentchanges) {
-
-				const d = new Date(recentchanges[rc].timestamp);
-
-				var month = months[d.getMonth()];
-
-				var min = d.getMinutes();
-				if (min.toString().length == 1) min = "0" + min;
-
-				var hou = d.getHours();
-				if (hou.toString().length == 1) hou = "0" + hou;
-
-				var day = d.getDate();
-				if (day.toString().length == 1) day = "0" + day;
-
-				var date = min + ":&rlm;" + hou + "، " + day + " " + month + " " + d.getFullYear();
-
+				var date = make_date(recentchanges[rc].timestamp);
 				var space = "&nbsp;";
 				var line = "";
 				if (numb < 10) line += "&nbsp;";
 				//line = "<span>" + recentchanges[rc].timestamp + "</span>&rlm;" + space;
 
+				line += "<span id='ns' style='display:none;'>" + recentchanges[rc].ns + "</span>";
 				line += "<span id='edittype' style='display:none;'>" + recentchanges[rc].type + "</span>";
 
 				line += "<span class='date' id='date'>" + date + "</span>";
@@ -136,33 +188,24 @@ function get2(user, limit, rccontinue, before) {
 
 				line += "\n<a href='" + url + recentchanges[rc].title + "'>" + recentchanges[rc].title + "</a>\n";
 
-				var colimit = 200;
-				var comment = recentchanges[rc].comment;
-				if (comment.indexOf("/*") == -1) {
-					comment = recentchanges[rc].parsedcomment;
-					colimit = 900;
-				};
-
-				// strip long comments to colimit
-				if (comment.length > colimit) {
-					comment = comment.substring(0, colimit) + "...";
-				};
-				// replace (href="/wiki/) by (href="https://ar.wikipedia.org/wiki/) in comment
-				var wikiurl = "https://ar.wikipedia.org/wiki/";
-
-				comment = comment.replace(/href="\/wiki\//g, 'href="' + wikiurl);
-				comment = comment.replace(/href='\/wiki\//g, "href='" + wikiurl);
-
+				var comment = make_comment(recentchanges[rc].comment, recentchanges[rc].parsedcomment);
+				
 				line += "\n<span id='comment'>(" + comment + ")</span>&rlm;\n";
 
 				$("#li" + numb).html(line);
 				$("#li" + numb).addClass(recentchanges[rc].type);
-				/*
-				var newli = "\n<li class='filterDiv " + recentchanges[rc].type + "'>" + line + "</li>\n";
-				tableBody = $("#rc");
-				tableBody.append(newli);
-				*/
 
+				$("#li" + numb).addClass("nsall");
+				$("#li" + numb).addClass("ns" + recentchanges[rc].ns);
+				//----------------------
+				var ns = recentchanges[rc].ns;
+				if (ns == 2 || ns == 3) $("#ns2").show();
+				if (ns == 4 || ns == 5) $("#ns4").show();
+				if (ns == 6 || ns == 7) $("#ns6").show();
+				if (ns == 12 || ns == 13) $("#ns12").show();
+				if (ns == 100 || ns == 101) $("#ns100").show();
+				if (ns == 828 || ns == 829) $("#ns828").show();
+				//----------------------
 				numb++;
 			}
 
@@ -203,5 +246,9 @@ function get(user, limit, rccontinue, before) {
 function filterSelection(c) {
 	if (c == "all") c = "filterDiv";
 	$(".filterDiv").hide();
+	$("." + c).show();
+}
+function filterbyns(c) {
+	$(".nsall").hide();
 	$("." + c).show();
 }
