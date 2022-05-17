@@ -135,10 +135,18 @@
             </div>
         </div>
     </div>
-        <div>
-            (<span class="newst boldfont">الأحدث</span> | الأقدم)
-            عرض (<span class="pref1 boldfont">أحدث <span class="nowlimit"></span></span>  | <span class="next1 boldfont">أقدم <span class="nowlimit"></span></span>)&nbsp;( <span class="limit20 boldfont">20</span> | <span class="limit50 boldfont">50</span> | <span class="limit100 boldfont">100</span> | <span class="limit250 boldfont">250</span> | <span class="limit500 boldfont">500</span> ).
-        </div>
+    <div>
+        (<span class="newst boldfont">الأحدث</span> | الأقدم)
+        عرض (<span class="pref1 boldfont">أحدث <span class="nowlimit"></span></span>  | 
+        <span class="next1 boldfont">أقدم <span class="nowlimit"></span></span>)&nbsp;
+        ( 
+            <span class="limit20 boldfont">20</span> | 
+            <span class="limit50 boldfont">50</span> | 
+            <span class="limit100 boldfont">100</span> | 
+            <span class="limit250 boldfont">250</span> | 
+            <span class="limit500 boldfont">500</span>
+        ).
+    </div>
     <div id="panel-body" class="panel-body">
         <ol id="rc">
 
@@ -153,9 +161,17 @@
         </ol>
     </div>
     <div>
-            (<span class="newst boldfont">الأحدث</span> | الأقدم)
-            عرض (<span class="pref1 boldfont">أحدث <span class="nowlimit"></span></span>  | <span class="next1 boldfont">أقدم <span class="nowlimit"></span></span>)&nbsp;( <span class="limit20 boldfont">20</span> | <span class="limit50 boldfont">50</span> | <span class="limit100 boldfont">100</span> | <span class="limit250 boldfont">250</span> | <span class="limit500 boldfont">500</span> ).
-        </div>
+        (<span class="newst boldfont">الأحدث</span> | الأقدم)
+        عرض (<span class="pref1 boldfont">أحدث <span class="nowlimit"></span></span>  | 
+        <span class="next1 boldfont">أقدم <span class="nowlimit"></span></span>)&nbsp;
+        ( 
+            <span class="limit20 boldfont">20</span> | 
+            <span class="limit50 boldfont">50</span> | 
+            <span class="limit100 boldfont">100</span> | 
+            <span class="limit250 boldfont">250</span> | 
+            <span class="limit500 boldfont">500</span>
+        ).
+    </div>
   </div>
 
 </div>
