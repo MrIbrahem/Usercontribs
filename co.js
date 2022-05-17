@@ -74,7 +74,6 @@ function get2(user, limit, rccontinue, before) {
 
 
 		$(".pref1").html("<a href='" + ure + "'>أحدث " + limit + "</a>");
-		$("#pref2").html("<a href='" + ure + "'>أحدث " + limit + "</a>");
 
 	};
 
