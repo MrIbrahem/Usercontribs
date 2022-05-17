@@ -202,6 +202,7 @@ function get2(user, limit, rccontinue, before) {
 				if (ns == 2 || ns == 3) $("#ns2").show();
 				if (ns == 4 || ns == 5) $("#ns4").show();
 				if (ns == 6 || ns == 7) $("#ns6").show();
+				if (ns == 10 || ns == 11) $("#ns10").show();
 				if (ns == 12 || ns == 13) $("#ns12").show();
 				if (ns == 100 || ns == 101) $("#ns100").show();
 				if (ns == 828 || ns == 829) $("#ns828").show();
@@ -239,16 +240,59 @@ function get(user, limit, rccontinue, before) {
 
 	get2(user, limit, rccontinue, before);
 
-	// var lll = $("#tablimit1").html();
-	// $("#tablimit2").text('sss');
 };
+let edit_types = 'all';
+let ns_types = 'all';
 
 function filterSelection(c) {
+	edit_types = c;
 	if (c == "all") c = "filterDiv";
 	$(".filterDiv").hide();
+	//-------------
 	$("." + c).show();
+	//-------------
+	filterbyns(ns_types);
+	//-------------
 }
+
 function filterbyns(c) {
+	ns_types = c;
 	$(".nsall").hide();
-	$("." + c).show();
+	$(".ns" + c).show();
+	//-------------------
+	if (edit_types != 'all') {
+		if (edit_types == 'edit')  $(".new").hide();
+		if (edit_types == 'new')   $(".edit").hide();
+	};
+	//-------------------
 }
+function myFunction() {
+    var input, filter, ol, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ol = document.getElementById("rc");
+    li = ol.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i];
+        txtValue = $(a).text();
+        if (txtValue.toUpperCase().indexOf(filter) > -1 && li[i].style.display != "none") {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+
+$(document).ready(function(){
+	
+	// Add active class to the current control button (highlight it)
+	$(".btn2").click(function(){
+		$(".btn2").removeClass("active");
+		$(this).addClass("active");
+	});
+	// Add active class to the current control button (highlight it)
+	$(".btn1").click(function(){
+		$(".btn1").removeClass("active");
+		$(this).addClass("active");
+	});
+});

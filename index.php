@@ -34,7 +34,7 @@
     .changeslist {
         content: '. .';
     }
-    .btne {
+    .btn {
         border: none;
         outline: none;
         padding: 6px 12px;
@@ -42,8 +42,15 @@
         cursor: pointer;
     }
 
-    .btne:hover {
+    .btn:hover {
         background-color: #ddd;
+    }
+    .btn.active {
+        background-color: #666;
+        color: white;
+    }
+    .smallbtn {
+        padding: 6px 1px;
     }
 </style>
 </head>
@@ -63,13 +70,12 @@
 		</div>
 	</nav>
 </header>
-<div class="container"  dir="rtl">
+<div class="container" dir="rtl">
     <div class="panel panel-default">
         <div class="panel-heading">
                 <form id='form' action='index.php' method='get'>
                     <input type='text' name='user' id='user' placeholder='اسم المستخدم' required>
                     <input type='number' name='limit' id='limit' value='250'>
-                    <!-- <input type='submit' value='بدء' onclick='test()'> -->
                     <input type='submit' value='بدء'>
                 </form>
                 <p><span id="msg" style='color:red;'></span></p>
@@ -79,51 +85,52 @@
       <h2><span id="username">اسم المستخدم</span></h2><br>
     <div class="panel">
         <div class="row">
-            <div class="col-sm-8"> 
+            <div class="col-sm-6"> 
                 <div id="myBtnContainer">
-                    <button class="btne active" onclick="filterbyns('nsall')">الكل</button>
-                    <button class="btne" onclick="filterbyns('ns0')">مقالات</button>
-                    <button class="btne" onclick="filterbyns('ns1')">(ن)</button>
+                    <button class="btn btn1 active" onclick="filterbyns('all')">الكل</button>
+                    <button class="btn btn1" onclick="filterbyns('0')">مقالات</button>
+                    <button class="btn btn1 smallbtn" onclick="filterbyns('1')">(ن)</button>
 
-                    <button class="btne" onclick="filterbyns('ns14')">تصنيفات</button>
-                    <button class="btne" onclick="filterbyns('ns15')">(ن)</button>
-
-                    <button class="btne" onclick="filterbyns('ns10')">قوالب</button>
-                    <button class="btne" onclick="filterbyns('ns11')">(ن)</button>
+                    <button class="btn btn1" onclick="filterbyns('14')">تصنيفات</button>
+                    <button class="btn btn1 smallbtn" onclick="filterbyns('15')">(ن)</button>
+                    <span id="ns10" style="display:none;">
+                        <button class="btn btn1" onclick="filterbyns('10')">قوالب</button>
+                        <button class="btn btn1 smallbtn" onclick="filterbyns('11')">(ن)</button>
+                    </span>
                     <span id="ns2" style="display:none;">
-                        <button class="btne" onclick="filterbyns('ns2')">مستخدم</button>
-                        <button class="btne" onclick="filterbyns('ns3')">(ن)</button>
+                        <button class="btn btn1" onclick="filterbyns('2')">مستخدم</button>
+                        <button class="btn btn1 smallbtn" onclick="filterbyns('3')">(ن)</button>
                     </span>
                     <span id="ns4" style="display:none;">
-                        <button class="btne" onclick="filterbyns('ns4')">ويكيبيديا</button>
-                        <button class="btne" onclick="filterbyns('ns5')">(ن)</button>
+                        <button class="btn btn1" onclick="filterbyns('4')">ويكيبيديا</button>
+                        <button class="btn btn1 smallbtn" onclick="filterbyns('5')">(ن)</button>
                     </span>
                     <span id="ns6" style="display:none;">
-                        <button class="btne" onclick="filterbyns('ns6')">ملف</button>
-                        <button class="btne" onclick="filterbyns('ns7')">(ن)</button>
+                        <button class="btn btn1" onclick="filterbyns('6')">ملف</button>
+                        <button class="btn btn1 smallbtn" onclick="filterbyns('7')">(ن)</button>
                     </span>
                     <span id="ns12" style="display:none;">
-                        <button class="btne" onclick="filterbyns('ns12')">مساعدة</button>
-                        <button class="btne" onclick="filterbyns('ns13')">(ن)</button>
+                        <button class="btn btn1" onclick="filterbyns('12')">مساعدة</button>
+                        <button class="btn btn1 smallbtn" onclick="filterbyns('13')">(ن)</button>
                     </span>
                     <span id="ns100" style="display:none;">
-                        <button class="btne" onclick="filterbyns('ns100')">بوابة</button>
-                        <button class="btne" onclick="filterbyns('ns101')">(ن)</button>
+                        <button class="btn btn1" onclick="filterbyns('100')">بوابة</button>
+                        <button class="btn btn1 smallbtn" onclick="filterbyns('101')">(ن)</button>
                     </span>
                     <span id="ns828" style="display:none;">
-                        <button class="btne" onclick="filterbyns('ns828')">وحدة</button>
-                        <button class="btne" onclick="filterbyns('ns829')">(ن)</button>
+                        <button class="btn btn1" onclick="filterbyns('828')">وحدة</button>
+                        <button class="btn btn1 smallbtn" onclick="filterbyns('829')">(ن)</button>
                     </span>
                 </div>	
             </div>
-            <div class="col-sm-2"> 
-                <input id="myInput" type="text" placeholder="فرز">
+            <div class="col-sm-3"> 
+                <input id="myInput" type="text" placeholder="فرز" onkeyup="myFunction()">
             </div>
-            <div class="col-sm-2"> 
-                <div id="myBtnContainer">
-                    <button class="btne active" onclick="filterSelection('all')"> الكل</button>
-                    <button class="btne" onclick="filterSelection('edit')">تعديلات</button>
-                    <button class="btne" onclick="filterSelection('new')">إنشاء</button>
+            <div class="col-sm-3"> 
+                <div id="myBtnContainer1">
+                    <button class="btn btn2 active" onclick="filterSelection('all')"> الكل</button>
+                    <button class="btn btn2" onclick="filterSelection('edit')">تعديلات</button>
+                    <button class="btn btn2" onclick="filterSelection('new')">إنشاء</button>
                 </div>	
             </div>
         </div>
@@ -169,16 +176,6 @@
     ");
 
 ?>
-<script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#rc li").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-</script>
 
 </div>
 
