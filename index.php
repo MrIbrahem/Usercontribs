@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html dir=rtl>
+<html dir="rtl">
 <head>
     <title>Usercontribs</title>
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
@@ -10,8 +10,8 @@
     //---------------- 
     $new = '
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     ';
     //---------------- 
     if ( $_SERVER['SERVER_NAME'] == 'localhost' ) { 
@@ -25,7 +25,6 @@
     };
 ?>
     <link rel="stylesheet" type="text/css" href="https://tools-static.wmflabs.org/cdnjs/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-
     <script src="co.js"></script>
 <style>
     .boldfont {
@@ -70,19 +69,59 @@
 		</div>
 	</nav>
 </header>
-<div class="container" dir="rtl">
+<div class="container">
     <div class="panel panel-default">
-        <div class="panel-heading">
-                <form id='form' action='index.php' method='get'>
-                    <input type='text' name='user' id='user' placeholder='اسم المستخدم' required>
-                    <input type='number' name='limit' id='limit' value='250'>
-                    <input type='submit' value='بدء'>
-                </form>
-                <p><span id="msg" style='color:red;'></span></p>
+        <div class="panel">
+            <form id='form' action='index.php' method='get'>
+            <div class="row">
+                <div class="col-sm-2">
+                    <input class="btn" type='submit' value='بدء'>
+                </div>
+                <div class="col-sm-5">
+                    <label>النوع:</label>
+                    <select name="edittype" id="edittype">
+                        <option value="all">الكل</option>
+                        <option value="new">إنشاء صفحات</option>
+                        <option value="edit">تعديلات</option>
+                    </select>
+                    <label>الحد:</label>
+                    <input type='number' style="width: 7em" name='limit' id='limit' value='<?php echo $_REQUEST['limit']; ?>'>
+                </div>
+                <div class="col-sm-5">
+                    <label>المستخدم:</label>
+                    <input type='text' size=15 name='user' id='user' placeholder='اسم المستخدم' required>
+                    <label>النطاق:</label>
+                    <select name="ns" id="ns">
+                        <option value="all">الكل</option>
+                        <option value="0">(مقالات)</option>
+                        <option value="1">نقاش</option>
+                        <option value="2">مستخدم</option>
+                        <option value="3">نقاش المستخدم</option>
+                        <option value="4">ويكيبيديا</option>
+                        <option value="5">نقاش ويكيبيديا</option>
+                        <option value="6">ملف</option>
+                        <option value="7">نقاش الملف</option>
+                        <option value="8">ميدياويكي</option>
+                        <option value="9">نقاش ميدياويكي</option>
+                        <option value="10">قالب</option>
+                        <option value="11">نقاش القالب</option>
+                        <option value="12">مساعدة</option>
+                        <option value="13">نقاش المساعدة</option>
+                        <option value="14">تصنيف</option>
+                        <option value="15">نقاش التصنيف</option>
+                        <option value="100">بوابة</option>
+                        <option value="101">نقاش البوابة</option>
+                        <option value="828">وحدة</option>
+                        <option value="829">نقاش الوحدة</option>
+                    </select>
+                </div>
+            </div>
+            </form>
+            <p><span id="msg" style='color:red;'></span></p>
         </div>
     </div>
-  <div class="panel panel-default">
-      <h2><span id="username">اسم المستخدم</span></h2><br>
+    <div class="panel panel-default">
+    <h2><span id="username">اسم المستخدم</span></h2><br>
     <div class="panel">
         <div class="row">
             <div class="col-sm-6"> 
@@ -175,15 +214,19 @@
   </div>
 
 </div>
+
 <?php
     $limit = $_REQUEST["limit"] ? $_REQUEST["limit"] : '250';
-
     $rccontinue = $_REQUEST["rccontinue"] ? $_REQUEST["rccontinue"] : '';
     $user = $_REQUEST["user"] ? $_REQUEST["user"] : 'Mr.Ibrahembot';
     $before = $_REQUEST["before"] ? $_REQUEST["before"] : '';
+    $ns = $_REQUEST["ns"];
+    $edittype = $_REQUEST["edittype"];
     #------------------------
     print("
     <script>
+    document.getElementsByName('ns')[0].value = '$ns'
+    document.getElementsByName('edittype')[0].value = '$edittype'
     $('#limit').val('$limit');
     $('.nowlimit').text('$limit');
     $('#user').val('$user');
