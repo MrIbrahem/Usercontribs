@@ -1,6 +1,6 @@
 $("#user").attr("required", true);
 
-url = "https://ar.wikipedia.org/w/index2.php?title=";
+url = "https://ar.wikipedia.org/w/index.php?title=";
 
 const months = [
 	"يناير",
@@ -270,13 +270,13 @@ function get2(user, mainlimit, rccontinue) {
 	}
 	// ---
 	if (rcc != undefined && rcc != null) {
-		var ure = 'index2.php?user=' + user + '&rccontinue=' + rcc + '&before=' + rccontinue + '&limit=' + mainlimit;
+		var ure = 'index.php?user=' + user + '&rccontinue=' + rcc + '&before=' + rccontinue + '&limit=' + mainlimit;
 		$(".next1").html("<a href='" + ure + "'>أقدم " + mainlimit + "</a>");
 	};
 };
 
 function get(user, limit, rccontinue, before) {
-	var urs = 'index2.php?user=' + user;
+	var urs = 'index.php?user=' + user;
 	if (rccontinue != '') urs += '&rccontinue=' + rccontinue;
 	urs += '&limit=';
 
@@ -290,10 +290,10 @@ function get(user, limit, rccontinue, before) {
 	$(".nowlimit").text(limit);
 
 	if (rccontinue != '') {
-		$(".newst").html("<a href='" + 'index2.php?user=' + user + '&limit=' + limit + "'>الأحدث</a>");
-		var ure = 'index2.php?user=' + user + '&limit=' + limit;
+		$(".newst").html("<a href='" + 'index.php?user=' + user + '&limit=' + limit + "'>الأحدث</a>");
+		var ure = 'index.php?user=' + user + '&limit=' + limit;
 		if (before != '') {
-			var ure = 'index2.php?user=' + user + '&rccontinue=' + before + '&limit=' + limit;
+			var ure = 'index.php?user=' + user + '&rccontinue=' + before + '&limit=' + limit;
 		};
 		$(".pref1").html("<a href='" + ure + "'>أحدث " + limit + "</a>");
 
