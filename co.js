@@ -1,6 +1,6 @@
 $("#user").attr("required", true);
 
-url = "https://ar.wikipedia.org/w/index.php?title=";
+url = "https://ar.wikipedia.org/w/index2.php?title=";
 
 const months = [
 	"يناير",
@@ -270,128 +270,13 @@ function get2(user, mainlimit, rccontinue) {
 	}
 	// ---
 	if (rcc != undefined && rcc != null) {
-		var ure = 'index.php?user=' + user + '&rccontinue=' + rcc + '&before=' + rccontinue + '&limit=' + mainlimit;
+		var ure = 'index2.php?user=' + user + '&rccontinue=' + rcc + '&before=' + rccontinue + '&limit=' + mainlimit;
 		$(".next1").html("<a href='" + ure + "'>أقدم " + mainlimit + "</a>");
 	};
 };
 
-/*function get2(user, limit, rccontinue) {
-	// $("#username").text(user);
-	// make user url
-
-	var url2 = "https://ar.wikipedia.org/w/api.php";
-	var params = {
-		action: "query",
-		list: "recentchanges",
-		rcprop: "title|timestamp|ids|tags|sizes|sha1|redirect|patrolled|parsedcomment|loginfo|oresscores|flags|comment|userid|user",
-		rclimit: limit,
-		format: "json",
-		utf8: 1,
-		rcuser: user,
-		rctype: "edit|new"
-	};
-
-	if (rccontinue != '') {
-		params.rccontinue = rccontinue;
-	};
-
-	url2 = url2 + "?origin=*";
-	// url2 = url2 + "?format=json";
-	Object.keys(params).forEach(function(key) {
-		url2 += "&" + key + "=" + params[key];
-	});
-
-	fetch(url2)
-		.then(function(response) {
-			return response.json();
-		})
-		.then(function(response) {
-			var recentchanges = response.query.recentchanges;
-			var numb = 0;
-			for (var rc in recentchanges) {
-				var date = make_date(recentchanges[rc].timestamp);
-				var space = "&nbsp;";
-				var line = "";
-				if (numb < 10) line += "&nbsp;";
-				//line = "<span>" + recentchanges[rc].timestamp + "</span>&rlm;" + space;
-
-				line += "<span id='ns' style='display:none;'>" + recentchanges[rc].ns + "</span>";
-				line += "<span id='edittype' style='display:none;'>" + recentchanges[rc].type + "</span>";
-
-				line += "<span class='date' id='date'>" + date + "</span>";
-
-				var dh = "<a href='" + url + recentchanges[rc].title + "&diff=prev&oldid=" + recentchanges[rc].revid + "'>فرق</a>";
-				dh += space + "-" + space + "<a href='" + url + recentchanges[rc].title + "&action=history'>تاريخ</a>";
-
-				line += "\n<span> . . </span>( " + dh + " )<span> . . </span>&rlm;\n";
-
-				// diffrent between old lenth and new lenth
-				var lenthdiff = recentchanges[rc].newlen - recentchanges[rc].oldlen;
-				var diff = '';
-				if (lenthdiff > 0) {
-					lenthdiff = "+" + lenthdiff;
-					diff = "<span class='diff' style='color:green;' id='diff" + numb + "'>" + lenthdiff + "</span>";
-				} else {
-					diff = "<span class='diff' style='color:red;' id='diff" + numb + "'>" + lenthdiff + "</span>";
-				}
-
-				line += '(' + diff + ')<span> . . </span>';
-
-				if (recentchanges[rc].type == "edit") {
-					line += "";
-				} else {
-					line += '<abbr style="text-underline-position: under;font-weight: bold;" title="أنشأ هذا التعديل صفحة جديدة">ج&zwnj;</abbr>';
-				};
-
-
-				var len = lenthdiff.toString().length;
-				// alert(len);
-				var digits = 8 - len;
-				// line += '(' + digits +  ')';
-
-				var sas = "";
-				for (var i = 0; i < digits; i++) {
-					sas += "&nbsp;";
-				};
-
-				line += sas + '&rlm;\n';
-
-				line += "\n<a href='" + url + recentchanges[rc].title + "'>" + recentchanges[rc].title + "</a>\n";
-
-				var comment = make_comment(recentchanges[rc].comment, recentchanges[rc].parsedcomment);
-				
-				line += "\n<span id='comment'>(" + comment + ")</span>&rlm;\n";
-
-				$("#li" + numb).html(line);
-				$("#li" + numb).addClass(recentchanges[rc].type);
-
-				$("#li" + numb).addClass("nsall");
-				$("#li" + numb).addClass("ns" + recentchanges[rc].ns);
-				//----------------------
-				var ns = recentchanges[rc].ns;
-				if (ns == 2 || ns == 3) $("#ns2").show();
-				if (ns == 4 || ns == 5) $("#ns4").show();
-				if (ns == 6 || ns == 7) $("#ns6").show();
-				if (ns == 10 || ns == 11) $("#ns10").show();
-				if (ns == 12 || ns == 13) $("#ns12").show();
-				if (ns == 100 || ns == 101) $("#ns100").show();
-				if (ns == 828 || ns == 829) $("#ns828").show();
-				//----------------------
-				numb++;
-			}
-			var rcc = response.continue.rccontinue;
-			if (rcc != undefined && rcc != null) {
-				var ure = 'index.php?user=' + user + '&rccontinue=' + rcc + '&before=' + rccontinue + '&limit=' + limit;
-				$(".next1").html("<a href='" + ure + "'>أقدم " + limit + "</a>");
-			};
-		})
-		.catch(function(error) {
-			console.log(error);
-		});
-};*/
-
 function get(user, limit, rccontinue, before) {
-	var urs = 'index.php?user=' + user;
+	var urs = 'index2.php?user=' + user;
 	if (rccontinue != '') urs += '&rccontinue=' + rccontinue;
 	urs += '&limit=';
 
@@ -405,10 +290,10 @@ function get(user, limit, rccontinue, before) {
 	$(".nowlimit").text(limit);
 
 	if (rccontinue != '') {
-		$(".newst").html("<a href='" + 'index.php?user=' + user + '&limit=' + limit + "'>الأحدث</a>");
-		var ure = 'index.php?user=' + user + '&limit=' + limit;
+		$(".newst").html("<a href='" + 'index2.php?user=' + user + '&limit=' + limit + "'>الأحدث</a>");
+		var ure = 'index2.php?user=' + user + '&limit=' + limit;
 		if (before != '') {
-			var ure = 'index.php?user=' + user + '&rccontinue=' + before + '&limit=' + limit;
+			var ure = 'index2.php?user=' + user + '&rccontinue=' + before + '&limit=' + limit;
 		};
 		$(".pref1").html("<a href='" + ure + "'>أحدث " + limit + "</a>");
 
@@ -460,7 +345,6 @@ function myFunction() {
         }
     }
 }
-
 $(document).ready(function(){
 
 	// Add active class to the current control button (highlight it)

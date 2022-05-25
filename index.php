@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html dir="rtl">
+<html lang="ar" dir="rtl">
 <head>
     <title>Usercontribs</title>
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
@@ -9,8 +9,8 @@
 <?php
     //---------------- 
     $new = '
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     ';
     //---------------- 
@@ -71,7 +71,7 @@
 </header>
 <div class="container">
     <div class="panel panel-default">
-        <div class="panel">
+        <div>
             <form id='form' action='index.php' method='get'>
             <div class="row">
                 <div class="col-sm-2">
@@ -121,97 +121,97 @@
         </div>
     </div>
     <div class="panel panel-default">
-    <h2><span id="username">اسم المستخدم</span></h2><br>
-    <div class="panel">
-        <div class="row">
-            <div class="col-sm-6"> 
-                <div id="myBtnContainer">
-                    <button class="btn btn1 active" onclick="filterbyns('all')">الكل</button>
-                    <button class="btn btn1" onclick="filterbyns('0')">مقالات</button>
-                    <button class="btn btn1 smallbtn" onclick="filterbyns('1')">(ن)</button>
+        <h2><span id="username">اسم المستخدم</span></h2><br>
+        <div class="panel-head">
+            <div class="row">
+                <div class="col-sm-6"> 
+                    <div id="myBtnContainer">
+                        <button class="btn btn1 active" onclick="filterbyns('all')">الكل</button>
+                        <button class="btn btn1" onclick="filterbyns('0')">مقالات</button>
+                        <button class="btn btn1 smallbtn" onclick="filterbyns('1')">(ن)</button>
 
-                    <button class="btn btn1" onclick="filterbyns('14')">تصنيفات</button>
-                    <button class="btn btn1 smallbtn" onclick="filterbyns('15')">(ن)</button>
-                    <span id="ns10" style="display:none;">
-                        <button class="btn btn1" onclick="filterbyns('10')">قوالب</button>
-                        <button class="btn btn1 smallbtn" onclick="filterbyns('11')">(ن)</button>
-                    </span>
-                    <span id="ns2" style="display:none;">
-                        <button class="btn btn1" onclick="filterbyns('2')">مستخدم</button>
-                        <button class="btn btn1 smallbtn" onclick="filterbyns('3')">(ن)</button>
-                    </span>
-                    <span id="ns4" style="display:none;">
-                        <button class="btn btn1" onclick="filterbyns('4')">ويكيبيديا</button>
-                        <button class="btn btn1 smallbtn" onclick="filterbyns('5')">(ن)</button>
-                    </span>
-                    <span id="ns6" style="display:none;">
-                        <button class="btn btn1" onclick="filterbyns('6')">ملف</button>
-                        <button class="btn btn1 smallbtn" onclick="filterbyns('7')">(ن)</button>
-                    </span>
-                    <span id="ns12" style="display:none;">
-                        <button class="btn btn1" onclick="filterbyns('12')">مساعدة</button>
-                        <button class="btn btn1 smallbtn" onclick="filterbyns('13')">(ن)</button>
-                    </span>
-                    <span id="ns100" style="display:none;">
-                        <button class="btn btn1" onclick="filterbyns('100')">بوابة</button>
-                        <button class="btn btn1 smallbtn" onclick="filterbyns('101')">(ن)</button>
-                    </span>
-                    <span id="ns828" style="display:none;">
-                        <button class="btn btn1" onclick="filterbyns('828')">وحدة</button>
-                        <button class="btn btn1 smallbtn" onclick="filterbyns('829')">(ن)</button>
-                    </span>
-                </div>	
-            </div>
-            <div class="col-sm-3"> 
-                <input id="myInput" type="text" placeholder="فرز" onkeyup="myFunction()">
-            </div>
-            <div class="col-sm-3"> 
-                <div id="myBtnContainer1">
-                    <button class="btn btn2 active" onclick="filterSelection('all')"> الكل</button>
-                    <button class="btn btn2" onclick="filterSelection('edit')">تعديلات</button>
-                    <button class="btn btn2" onclick="filterSelection('new')">إنشاء</button>
-                </div>	
+                        <button class="btn btn1" onclick="filterbyns('14')">تصنيفات</button>
+                        <button class="btn btn1 smallbtn" onclick="filterbyns('15')">(ن)</button>
+                        <span id="ns10" style="display:none;">
+                            <button class="btn btn1" onclick="filterbyns('10')">قوالب</button>
+                            <button class="btn btn1 smallbtn" onclick="filterbyns('11')">(ن)</button>
+                        </span>
+                        <span id="ns2" style="display:none;">
+                            <button class="btn btn1" onclick="filterbyns('2')">مستخدم</button>
+                            <button class="btn btn1 smallbtn" onclick="filterbyns('3')">(ن)</button>
+                        </span>
+                        <span id="ns4" style="display:none;">
+                            <button class="btn btn1" onclick="filterbyns('4')">ويكيبيديا</button>
+                            <button class="btn btn1 smallbtn" onclick="filterbyns('5')">(ن)</button>
+                        </span>
+                        <span id="ns6" style="display:none;">
+                            <button class="btn btn1" onclick="filterbyns('6')">ملف</button>
+                            <button class="btn btn1 smallbtn" onclick="filterbyns('7')">(ن)</button>
+                        </span>
+                        <span id="ns12" style="display:none;">
+                            <button class="btn btn1" onclick="filterbyns('12')">مساعدة</button>
+                            <button class="btn btn1 smallbtn" onclick="filterbyns('13')">(ن)</button>
+                        </span>
+                        <span id="ns100" style="display:none;">
+                            <button class="btn btn1" onclick="filterbyns('100')">بوابة</button>
+                            <button class="btn btn1 smallbtn" onclick="filterbyns('101')">(ن)</button>
+                        </span>
+                        <span id="ns828" style="display:none;">
+                            <button class="btn btn1" onclick="filterbyns('828')">وحدة</button>
+                            <button class="btn btn1 smallbtn" onclick="filterbyns('829')">(ن)</button>
+                        </span>
+                    </div>	
+                </div>
+                <div class="col-sm-3"> 
+                    <input id="myInput" type="text" placeholder="فرز" onkeyup="myFunction()">
+                </div>
+                <div class="col-sm-3"> 
+                    <div id="myBtnContainer1">
+                        <button class="btn btn2 active" onclick="filterSelection('all')"> الكل</button>
+                        <button class="btn btn2" onclick="filterSelection('edit')">تعديلات</button>
+                        <button class="btn btn2" onclick="filterSelection('new')">إنشاء</button>
+                    </div>	
+                </div>
             </div>
         </div>
-    </div>
-    <div>
-        (<span class="newst boldfont">الأحدث</span> | الأقدم)
-        عرض (<span class="pref1 boldfont">أحدث <span class="nowlimit"></span></span>  | 
-        <span class="next1 boldfont">أقدم <span class="nowlimit"></span></span>)&nbsp;
-        ( 
-            <span class="limit20 boldfont">20</span> | 
-            <span class="limit50 boldfont">50</span> | 
-            <span class="limit100 boldfont">100</span> | 
-            <span class="limit250 boldfont">250</span> | 
-            <span class="limit500 boldfont">500</span>
-        ).
-    </div>
-    <div id="panel-body" class="panel-body">
-        <ol id="rc">
+        <div>
+            (<span class="newst boldfont">الأحدث</span> | الأقدم)
+            عرض (<span class="pref1 boldfont">أحدث <span class="nowlimit"></span></span>  | 
+            <span class="next1 boldfont">أقدم <span class="nowlimit"></span></span>)&nbsp;
+            ( 
+                <span class="limit20 boldfont">20</span> | 
+                <span class="limit50 boldfont">50</span> | 
+                <span class="limit100 boldfont">100</span> | 
+                <span class="limit250 boldfont">250</span> | 
+                <span class="limit500 boldfont">500</span>
+            ).
+        </div>
+        <div class="panel-body">
+            <ol id="rc">
 
-        <?php
-            $limit = $_REQUEST["limit"] ? $_REQUEST["limit"] : '250';
-            #------------------------
-            for ( $i = 0; $i < $limit; $i++ ) {
-                echo '<li class="filterDiv" id="li'.$i.'"></li>';
-            };
-            #------------------------
-        ?>
-        </ol>
+            <?php
+                $limit = $_REQUEST["limit"] ? $_REQUEST["limit"] : '250';
+                #------------------------
+                for ( $i = 0; $i < $limit; $i++ ) {
+                    echo '<li class="filterDiv" id="li'.$i.'"></li>';
+                };
+                #------------------------
+            ?>
+            </ol>
+        </div>
+        <div class="panel-footer">
+            (<span class="newst boldfont">الأحدث</span> | الأقدم)
+            عرض (<span class="pref1 boldfont">أحدث <span class="nowlimit"></span></span>  | 
+            <span class="next1 boldfont">أقدم <span class="nowlimit"></span></span>)&nbsp;
+            ( 
+                <span class="limit20 boldfont">20</span> | 
+                <span class="limit50 boldfont">50</span> | 
+                <span class="limit100 boldfont">100</span> | 
+                <span class="limit250 boldfont">250</span> | 
+                <span class="limit500 boldfont">500</span>
+            ).
+        </div>
     </div>
-    <div>
-        (<span class="newst boldfont">الأحدث</span> | الأقدم)
-        عرض (<span class="pref1 boldfont">أحدث <span class="nowlimit"></span></span>  | 
-        <span class="next1 boldfont">أقدم <span class="nowlimit"></span></span>)&nbsp;
-        ( 
-            <span class="limit20 boldfont">20</span> | 
-            <span class="limit50 boldfont">50</span> | 
-            <span class="limit100 boldfont">100</span> | 
-            <span class="limit250 boldfont">250</span> | 
-            <span class="limit500 boldfont">500</span>
-        ).
-    </div>
-  </div>
 
 </div>
 
