@@ -329,7 +329,7 @@ function filterbyns(c) {
 	};
 	//-------------------
 }
-function myFunction() {
+function filtertext() {
     var input, filter, ol, li, a, i, txtValue;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
@@ -358,3 +358,5 @@ $(document).ready(function(){
 		$(this).addClass("active");
 	});
 });
+
+// remove .png

@@ -137,7 +137,7 @@
                     <button type="button" class="btn btn2 btn-outline-primary" onclick="filterSelection('new')">إنشاء</button>
                 </div>
                 <div class="col-sm-3"> 
-                    <input id="myInput" type="text" placeholder="فرز" onkeyup="myFunction()">
+                    <input id="myInput" type="text" placeholder="فرز" onkeyup="filtertext()">
                 </div>
                 <div class="col-sm-6"> 
                     <div id="myBtnContainer">
