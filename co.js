@@ -87,13 +87,15 @@ function make_comment(comment, parsedcomment) {
 }*/
 
 function fetch_url(url,params) {
-	var result = "";
+	var result = [];
 	$.ajax({
 		url: url,
 		data: params,
 		async: false,
 		success: function(data) {
 			result = data;
+			// create url with params and log it to console
+			console.log( url + "?" + jQuery.param(params) )
 		}
 	});
 	return result;
@@ -114,8 +116,8 @@ function create_rows(recentchanges,numb) {
 
 		line += "<span class='date' id='date'>" + date + "</span>";
 
-		var dh = "<a href='" + url + recentchanges[rc].title + "&diff=prev&oldid=" + recentchanges[rc].revid + "'>فرق</a>";
-		dh += space + "-" + space + "<a href='" + url + recentchanges[rc].title + "&action=history'>تاريخ</a>";
+		var dh = "<a href='" + url + recentchanges[rc].title + "&diff=prev&oldid=" + recentchanges[rc].revid + "' target='_blank'>فرق</a>";
+		dh += space + "-" + space + "<a href='" + url + recentchanges[rc].title + "&action=history' target='_blank'>تاريخ</a>";
 
 		line += "\n<span> . . </span>( " + dh + " )<span> . . </span>&rlm;\n";
 
@@ -149,7 +151,7 @@ function create_rows(recentchanges,numb) {
 
 		line += sas + '&rlm;\n';
 
-		line += "\n<a href='" + url + recentchanges[rc].title + "'>" + recentchanges[rc].title + "</a>\n";
+		line += "\n<a href='" + url + recentchanges[rc].title + "' target='_blank'>" + recentchanges[rc].title + "</a>\n";
 
 		var comment = make_comment(recentchanges[rc].comment, recentchanges[rc].parsedcomment);
 		
@@ -332,7 +334,8 @@ function filterbyns(c) {
 function filtertext() {
     var input, filter, ol, li, a, i, txtValue;
     input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
+	filter = input.value.toUpperCase();
+	// if value != numbers only
     ol = document.getElementById("rc");
     li = ol.getElementsByTagName("li");
     for (i = 0; i < li.length; i++) {
@@ -344,7 +347,12 @@ function filtertext() {
             li[i].style.display = "none";
         }
     }
+	if (filter == '') {
+		filterSelection(edit_types);
+	}
 }
+//-------------------
+
 $(document).ready(function(){
 
 	// Add active class to the current control button (highlight it)
